@@ -46,7 +46,11 @@ void In(ifstream& ifst, saying_wisdom& s);
 void Out(ofstream& ofst, aphorism_wisdom& a);
 void Out(ofstream& ofst, saying_wisdom& s);
 
+int CountSymbolsAphorism(ofstream& ofst, aphorism_wisdom& a);
+int CountSymbolsSaying(ofstream& ofst, saying_wisdom& a);
+
 wisdom* InWisdom(ifstream& ifst);
+void OutWisdom(ofstream& ofst, Node* container);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);

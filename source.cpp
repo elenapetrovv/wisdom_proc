@@ -5,7 +5,7 @@ void In(ifstream& ifst, aphorism_wisdom& f) {
 	ifst >> f.text;
 	ifst >> f.author;
 }
-void OutAphorism(ofstream& ofst, aphorism_wisdom& f) {
+void Out(ofstream& ofst, aphorism_wisdom& f) {
 	ofst << "Text: " << f.text << endl;
 	ofst << "It is an aphorism. Author: " << f.author << endl;
 }
@@ -13,7 +13,7 @@ void In(ifstream& ifst, saying_wisdom& f) {
 	ifst >> f.text;
 	ifst >> f.country;
 }
-void OutSaying(ofstream& ofst, saying_wisdom& f) {
+void Out(ofstream& ofst, saying_wisdom& f) {
 	ofst << "Text: " << f.text << endl;
 	ofst << "It is a saying. Country: " << f.country << endl;
 }
@@ -47,14 +47,16 @@ void OutWisdom(ofstream& ofst, Node* container)
 		//aphorism_wisdom* aw;
 		//aw = (aphorism_wisdom*)(c->current->thought->aphorism);
 		//aw = (aphorism_wisdom*)(c->current->thought);
-		OutAphorism(ofst, container->thought->a);
+		Out(ofst, container->thought->a);
+		CountSymbolsAphorism(ofst, container->thought->a);
 	}
 	else
 	{
 		//saying_wisdom* sw;
 		//sw = (saying_wisdom*)(c->current->thought->saying);
 		//sw = (saying_wisdom*)(c->current->thought);
-		OutSaying(ofst, container->thought->s);
+		Out(ofst, container->thought->s);
+		CountSymbolsSaying(ofst, container->thought->s);
 	}
 }
 
@@ -109,4 +111,25 @@ void OutCont(ofstream& ofst, container* c) {
 		c->current = c->current->next;
 		i++;
 	} while (c->current != c->head);
+}
+int CountSymbolsAphorism(ofstream& ofst, aphorism_wisdom& a) {
+	int cnt = 0;
+	string symbols = ".,!?;";
+	for (int i = 0; i < a.text.length(); i++)
+	{
+		if (symbols.find(a.text[i]) < symbols.length())cnt++;
+	}
+	ofst << "Count of punctuation marks: " << cnt << endl;
+	return cnt;
+}
+
+int CountSymbolsSaying(ofstream& ofst, saying_wisdom& s) {
+	int cnt = 0;
+	string symbols = ".,!?;";
+	for (int i = 0; i < s.text.length(); i++)
+	{
+		if (symbols.find(s.text[i]) < symbols.length())cnt++;
+	}
+	ofst << "Count of punctuation marks: " << cnt << endl;
+	return cnt;
 }
