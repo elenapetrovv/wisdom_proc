@@ -4,18 +4,23 @@ using namespace std;
 void In(ifstream& ifst, aphorism_wisdom& f) {
 	ifst >> f.text;
 	ifst >> f.author;
+	ifst >> f.rate;
 }
-void OutAphorism(ofstream& ofst, aphorism_wisdom& f) {
+void Out(ofstream& ofst, aphorism_wisdom& f) {
 	ofst << "Text: " << f.text << endl;
 	ofst << "It is an aphorism. Author: " << f.author << endl;
+	ofst << "Subjective assessment of the aphorism on a ten-point scale: " << f.rate << "/10 " << endl;
+
 }
 void In(ifstream& ifst, saying_wisdom& f) {
 	ifst >> f.text;
 	ifst >> f.country;
+	ifst >> f.rate;
 }
-void OutSaying(ofstream& ofst, saying_wisdom& f) {
+void Out(ofstream& ofst, saying_wisdom& f) {
 	ofst << "Text: " << f.text << endl;
 	ofst << "It is a saying. Country: " << f.country << endl;
+	ofst << "Subjective assessment of the saying on a ten-point scale: " << f.rate << "/10 " << endl;
 }
 
 wisdom* InWisdom(ifstream& ifst) {
@@ -47,14 +52,14 @@ void OutWisdom(ofstream& ofst, Node* container)
 		//aphorism_wisdom* aw;
 		//aw = (aphorism_wisdom*)(c->current->thought->aphorism);
 		//aw = (aphorism_wisdom*)(c->current->thought);
-		OutAphorism(ofst, container->thought->a);
+		Out(ofst, container->thought->a);
 	}
 	else
 	{
 		//saying_wisdom* sw;
 		//sw = (saying_wisdom*)(c->current->thought->saying);
 		//sw = (saying_wisdom*)(c->current->thought);
-		OutSaying(ofst, container->thought->s);
+		Out(ofst, container->thought->s);
 	}
 }
 

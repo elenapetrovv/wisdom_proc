@@ -7,11 +7,13 @@ using namespace std;
 struct aphorism_wisdom {
 	string text = "";
 	string author = "";
+	int rate = 0;
 };
 
 struct saying_wisdom {
 	string text = "";
 	string country = "";
+	int rate = 0;
 };
 struct wisdom {
 	enum type { aphorism, saying };
@@ -47,6 +49,7 @@ void Out(ofstream& ofst, aphorism_wisdom& a);
 void Out(ofstream& ofst, saying_wisdom& s);
 
 wisdom* InWisdom(ifstream& ifst);
+void OutWisdom(ofstream& ofst, Node* container);
 void Clear(container* c);
 void InCont(ifstream& ifst, container* c);
 void OutCont(ofstream& ofst, container* c);
