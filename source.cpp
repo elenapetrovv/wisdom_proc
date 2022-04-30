@@ -76,12 +76,11 @@ void OutWisdom(ofstream& ofst, Node* container)
 		//sw = (saying_wisdom*)(c->current->thought->saying);
 		//sw = (saying_wisdom*)(c->current->thought);
 		Out(ofst, container->thought->s);
-		CountSymbolsSaying(ofst, container->thought->s);
 	}
 	else
 	{
 		Out(ofst, container->thought->r);
-		CountSymbolsRiddle(ofst, container->thought->r);
+		CountSymbolsSaying(ofst, container->thought->s);
 	}
 }
 
@@ -174,26 +173,6 @@ int CountSymbols(saying_wisdom& s) {
 	for (int i = 0; i < s.text.length(); i++)
 	{
 		if (symbols.find(s.text[i]) < symbols.length())cnt++;
-	}
-	return cnt;
-}
-
-int CountSymbolsRiddle(ofstream& ofst, riddle_wisdom& a) {
-	int cnt = 0;
-	string symbols = ".,!?;";
-	for (int i = 0; i < a.text.length(); i++)
-	{
-		if (symbols.find(a.text[i]) < symbols.length())cnt++;
-	}
-	ofst << "count of punctuation marks: " << cnt << endl;
-	return cnt;
-}
-int CountSymbols(riddle_wisdom& a) {
-	int cnt = 0;
-	string symbols = ".,!?;";
-	for (int i = 0; i < a.text.length(); i++)
-	{
-		if (symbols.find(a.text[i]) < symbols.length())cnt++;
 	}
 	return cnt;
 }
