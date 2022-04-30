@@ -1,2 +1,2 @@
 # wisdom_proc
-proc
+ proc
