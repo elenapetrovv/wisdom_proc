@@ -54,6 +54,7 @@ wisdom* InWisdom(ifstream& ifst) {
 }
 void OutWisdom(ofstream& ofst, Node* container)
 {
+	ofst << "Text: " << container->thought->text << endl;
 	if (container->thought->key == wisdom::type::aphorism)
 	{
 		//aphorism_wisdom* aw;
@@ -72,7 +73,7 @@ void OutWisdom(ofstream& ofst, Node* container)
 	{
 		Out(ofst, container->thought->r);
 	}
-	ofst << "Subjective assessment of the riddle on a ten-point scale: " << container->thought->rate << "/10 " << endl;
+	ofst << "Subjective assessment on a ten-point scale: " << container->thought->rate << "/10 " << endl;
 	ofst << "count of punctuation marks: " << CountSymbols(*container->thought) << endl;
 }
 
@@ -174,7 +175,7 @@ void OutAphorisms(ofstream& ofst, container* c)
 		ofst << i << ": ";
 		if (c->current->thought->key == wisdom::type::aphorism)
 		{
-			ofst << "Text: " << c->current->thought->text << endl;
+			//ofst << "Text: " << c->current->thought->text << endl;
 			OutWisdom(ofst, c->current);
 		}
 		else
