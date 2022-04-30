@@ -19,6 +19,7 @@ struct saying_wisdom {
 struct riddle_wisdom {
 	string text = "";
 	string answer = "";
+	int rate = 0;
 };
 struct wisdom {
 	enum type { aphorism, saying, riddle };
