@@ -1,0 +1,13 @@
+Container contents 3 elements.
+1: Text: testAphorism
+It is an aphorism. Author: author
+Subjective assessment on a ten-point scale: 1/10 
+count of punctuation marks: 0
+2: Text: testSaying
+It is a saying. Country: country
+Subjective assessment on a ten-point scale: 2/10 
+count of punctuation marks: 0
+3: Text: testRiddle
+It is a riddle. Answer: answer
+Subjective assessment on a ten-point scale: 3/10 
+count of punctuation marks: 0

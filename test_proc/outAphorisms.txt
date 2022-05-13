@@ -1,0 +1,7 @@
+Only Aphorisms: 
+1: Text: testAphorism!
+It is an aphorism. Author: author
+Subjective assessment on a ten-point scale: 1/10 
+count of punctuation marks: 1
+2: 
+3: 

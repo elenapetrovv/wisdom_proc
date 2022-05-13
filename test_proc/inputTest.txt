@@ -1,0 +1,12 @@
+1
+testAphorism
+author
+1
+2
+testSaying
+country
+2
+3
+tesrRiddle
+answer
+3

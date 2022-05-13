@@ -1,0 +1,3 @@
+It is an aphorism. Author: author
+It is a saying. Country: country
+It is a riddle. Answer: answer
