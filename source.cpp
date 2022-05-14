@@ -1,4 +1,5 @@
 #include "Header.h"
+#include <string>
 using namespace std;
 
 void In(ifstream& ifst, aphorism_wisdom& f) {
@@ -185,4 +186,160 @@ void OutAphorisms(ofstream& ofst, container* c)
 		c->current = c->current->next;
 		i++;
 	} while (c->current != c->head);
+}
+bool fileCheck(ifstream& ifst, ofstream& ofst)
+{
+	bool result = true;
+	string digits = "0123456789";
+	char tmp[100];
+	string tmps;
+
+	if (!ifst.is_open())
+	{
+		cout << "Input file was not found.";
+		exit(1);
+	}
+	if (!ofst.is_open())
+	{
+		cout << "Output file was not found.";
+		exit(1);
+	}
+	int cnt = 1;
+	//type check
+	while (!ifst.eof())
+	{
+		ifst.getline(tmp, 100, '\n');
+		tmps = (tmp);
+		if (tmps == "")
+		{
+			cout << cnt << " Error: Type is a blank string.\n";
+			result = false;
+			exit(1);
+		}
+		for (int i = 0; i < tmps.length(); i++)
+		{
+			if (!(digits.find(tmps[i]) < digits.length()))
+			{
+				cout << cnt << " Error: Type definition contains incorrect characters.\n";
+				result = false;
+				exit(1);
+			}
+		}
+		int type = std::stoi(tmps);
+		if (type <= 0 || type > 3)
+		{
+			cout << cnt << " Error: Type is out of range.\n";
+			result = false;
+			exit(1);
+		}
+		//
+		//text
+		ifst.getline(tmp, 100, '\n');
+		tmps = (tmp);
+		if (tmps == "")
+		{
+			cout << cnt << " Error: Text is a blank string.\n";
+			result = false;
+			exit(1);
+		}
+		//
+		//for different types
+		switch (type)
+		{
+		case 1:
+		{
+			//aphorism - author
+			ifst.getline(tmp, 100, '\n');
+			tmps = (tmp);
+			if (tmps == "")
+			{
+				cout << cnt << " Error: The aphorism's author is a blank string.\n";
+				result = false;
+				exit(1);
+			}
+			for (int i = 0; i < tmps.length(); i++)
+			{
+				if (tmps[i] >= '0' && tmps[i] <= '9')
+				{
+					cout << cnt << " Error: The aphorism's author contains incorrect characters.\n";
+					result = false;
+					exit(1);
+				}
+			}
+			break;
+		}
+		case 2:
+		{
+			//saying - country
+			ifst.getline(tmp, 100, '\n');
+			tmps = (tmp);
+			if (tmps == "")
+			{
+				cout << cnt << " Error: The country is a blank string.\n";
+				result = false;
+				exit(1);
+			}
+			for (int i = 0; i < tmps.length(); i++)
+			{
+				if (tmps[i] >= '0' && tmps[i] <= '9')
+				{
+					cout << cnt << " Error: The saying's country contains incorrect characters.\n";
+					result = false;
+					exit(1);
+				}
+			}
+			break;
+		}
+		case 3:
+		{
+			// riddle - answer
+			ifst.getline(tmp, 100, '\n');
+			tmps = (tmp);
+			if (tmps == "")
+			{
+				cout << cnt << " Error: The answer is a blank string.\n";
+				result = false;
+				exit(1);
+			}
+			for (int i = 0; i < tmps.length(); i++)
+			{
+				if (tmps[i] >= '0' && tmps[i] <= '9')
+				{
+					cout << cnt << " Error: The riddle's answer contains incorrect characters.\n";
+					result = false;
+					exit(1);
+				}
+			}
+			break;
+		}
+		}
+		//
+		//rate
+		ifst.getline(tmp, 100, '\n');
+		tmps = (tmp);
+		if (tmps == "")
+		{
+			cout << cnt << " Error: The rate is a blank string.\n";
+			result = false;
+			exit(1);
+		}
+		for (int i = 0; i < tmps.length(); i++)
+		{
+			if (!(digits.find(tmps[i]) < digits.length()))
+			{
+				cout << cnt << " Error: The origin contains incorrect characters.\n";
+				result = false;
+				exit(1);
+			}
+		}
+		int rate = std::stoi(tmps);
+		if (rate < 0 || rate > 10)
+		{
+			cout << cnt << " Error: The rate is out of range.\n";
+			result = false;
+			exit(1);
+		}
+		//
+		cnt++;
+	}
 }

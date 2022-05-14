@@ -63,3 +63,4 @@ void OutCont(ofstream& ofst, container* c);
 bool Compare(Node* w1, Node* w2);
 void Sort(container& c);
 void OutAphorisms(ofstream& ofst, container* c);
+bool fileCheck(ifstream& ifst, ofstream& ofst);

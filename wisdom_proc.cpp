@@ -15,6 +15,11 @@ int main(int argc, char* argv[])
 	ifstream ifst(argv[1]);
 	ofstream ofst(argv[2]);
 	cout << "Start" << endl;
+
+	fileCheck(ifst, ofst);
+	ifst.close();
+	ifst.open(argv[1]);
+
 	container c;
 
 	string s1 = argv[1], s2 = argv[2];

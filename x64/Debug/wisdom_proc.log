@@ -1,2 +1,5 @@
 ﻿  source.cpp
+  wisdom_proc.cpp
+  Создание кода...
+C:\Users\Елена\Documents\GitHub\wisdom_proc\source.cpp(345): warning C4715: fileCheck: значение возвращается не при всех путях выполнения
   wisdom_proc.vcxproj -> C:\Users\Елена\Documents\GitHub\wisdom_proc\x64\Debug\wisdom_proc.exe
